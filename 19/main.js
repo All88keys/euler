@@ -1,6 +1,6 @@
 var day = 1;
 
-var dateString = (day%31).toString()+"/"+(Math.floor(day/31)%12).toString()+"/"(1900+Math.floor(day/365)).toString
+var dateString = (day%31).toString()+"/"+(Math.floor(day/31)%12).toString()+"/"+(1900+Math.floor(day/365)).toString()
 console.log(dateString);
 
 
