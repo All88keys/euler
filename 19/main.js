@@ -1,11 +1,15 @@
+var sundaycounter = 0;
+var daycounter = 0;
 var day = 1;
-var month = 1;
+var month = 12;
 var year = 1901;
 var bigMonths = [1,3,5,7,8,10,12];
+var smallMonths = [4,6,9,11]
 var february = 28;
 
 var addDay = function(){
 day++;
+daycounter++;
 //finds how many days are in february
 if(year % 4 == 0){
 	february = 29;
@@ -26,6 +30,10 @@ for(var i = 0; i<bigMonths.length; i++){
   	if(day > 31){
 		month++;
   	day = 1;
+    if(month > 12){
+    	month = 1;
+      year++;
+    }
 		}
   }
 }
@@ -39,22 +47,25 @@ if(month == 2){
 }
 
 //else clause for small months
-else{
-	if(day > 30){
+for(var i = 0; i<smallMonths.length; i++){
+	if(month == smallMonths[i]){
+  	if(day > 30){
 		month++;
   	day = 1;
+		}
   }
 }
 
-document.getElementById('day').innerHTML = day +"<br>"+ month +"<br>"+ year;
-
+if(day == 1 && daycounter%7 == 0)
+sundaycounter++;
 }
 
+while(year<2001){
+addDay();
+}
+console.log(sundaycounter);
 
-var dateString = (day%31).toString()+"/"+(Math.floor(day/31)%12).toString()+"/"+(1900+Math.floor(day/365)).toString()
-console.log(dateString);
-
-
+var dateString = null;
 var d = new Date(dateString);
 var weekday = new Array(7);
 weekday[0] =  "Sunday";
